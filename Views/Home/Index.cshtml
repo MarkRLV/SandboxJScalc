@@ -1,0 +1,77 @@
+﻿@model SandboxJScalc.Models.CommonInfo
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/css/site.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Sandbox JS Calc</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#Amount1").blur(function () {
+                Amount1 = $("#Amount1").val();
+                Amount2 = $("#Amount2").val();
+                $.ajax({
+                    type: "post",
+                    url: "/Home/Recalc",
+                    data: {
+                        Amount1: Amount1,
+                        Amount2: Amount2
+                    },
+                    success: function (data) {
+                        $("#TotalAmount").html(data.totalamount);
+                    }
+                })
+            });
+
+            $("#Amount2").blur(function () {
+                Amount1 = $("#Amount1").val();
+                Amount2 = $("#Amount2").val();
+                $.ajax({
+                    type: "post",
+                    url: "/Home/Recalc",
+                    data: {
+                        Amount1: Amount1,
+                        Amount2: Amount2
+                    },
+                    success: function (data) {
+                        $("#TotalAmount").html(data.totalamount);
+                    }
+                })
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1 style="text-align: center">Sandbox JS Calc</h1>
+    <br />
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <table align="center">
+            <tr>
+                <td>Amount 1 :</td>
+                <td>
+                    @Html.TextBoxFor(m => m.Amount1, new { @id = "Amount1" })
+                </td>
+            </tr>
+            <tr>
+                <td>Amount 2 :</td>
+                <td>
+                    @Html.TextBoxFor(m => m.Amount2, new { @id = "Amount2" })
+                </td>
+            </tr>
+            <tr>
+                <td>Total Amount :</td>
+                <td style="text-align: right; background-color: lightblue">
+                    <div id="TotalAmount">0</div>
+                </td>
+            </tr>
+        </table>
+    }
+</body>
+</html>
