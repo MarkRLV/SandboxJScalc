@@ -56,13 +56,15 @@
             <tr>
                 <td>Amount 1 :</td>
                 <td>
-                    @Html.TextBoxFor(m => m.Amount1, new { @id = "Amount1" })
+                    @Html.TextBoxFor(m => m.Amount1, 
+                        new { @id = "Amount1", @class = "pmtallocated pull-right", @dir = "rtl" })
                 </td>
             </tr>
             <tr>
                 <td>Amount 2 :</td>
                 <td>
-                    @Html.TextBoxFor(m => m.Amount2, new { @id = "Amount2" })
+                    @Html.TextBoxFor(m => m.Amount2, 
+                        new { @id = "Amount2", @class = "pmtallocated pull-right", @dir = "rtl" })
                 </td>
             </tr>
             <tr>

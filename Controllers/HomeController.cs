@@ -23,9 +23,9 @@ namespace SandboxJScalc.Controllers
             return View();
         }
 
-        public ActionResult Recalc(double Amount1, double Amount2)
+        public ActionResult Recalc(decimal Amount1, decimal Amount2)
         {
-            double TotalAmount = Amount1 + Amount2;
+            decimal TotalAmount = Amount1 + Amount2;
             return Json(new { totalamount = TotalAmount });
         }
 
