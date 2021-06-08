@@ -1,0 +1,28 @@
+﻿@model SandboxJScalc.Models.CommonInfo
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/css/site.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+</head>
+
+<body>
+    <h1 style="text-align: center">Drop Down Demo</h1>
+    <br />
+    @using (Html.BeginForm("DDdemo", "Home", FormMethod.Post))
+    {
+<p style="text-align: center">
+    Period Covered:&nbsp;&nbsp;
+    @Html.DropDownListFor(m => m.PeriodCoveredMonth, 
+                new SelectList((System.Collections.IEnumerable)Model.MonthList, "Items", "SelectedValue"))
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    @Html.DropDownListFor(m => m.PeriodCoveredYear,
+                new SelectList((System.Collections.IEnumerable)Model.YearList, "Items", "SelectedValue"))
+</p>
+    }
+</body>
+</html>
+
